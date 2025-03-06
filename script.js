@@ -1,4 +1,8 @@
 const errorMessages = {
+  "Rows and columns must be between 1 and 10.": {
+    title: "Невірний розмір матриці",
+    description: "Кількість рядків і стовпців повинна бути від 1 до 10. Введіть коректні значення.",
+  },
   "Matrices cannot be added: size mismatch.": {
     title: "Неможливо додати матриці",
     description: "Додавати можна лише матриці однакового розміру. Перевірте розмірність матриць A та B.",
@@ -9,7 +13,8 @@ const errorMessages = {
   },
   "Matrices cannot be multiplied: size mismatch.": {
     title: "Неможливо перемножити матриці",
-    description: "Множення можливе лише для матриць, де кількість стовпців матриці A дорівнює кількості рядків матриці B. Перевірте розмірність матриць.",
+    description:
+      "Множення можливе лише для матриць, де кількість стовпців матриці A дорівнює кількості рядків матриці B. Перевірте розмірність матриць.",
   },
   "Matrix A is invalid.": {
     title: "Невірна матриця A",
@@ -47,7 +52,6 @@ function hideError() {
   const errorElement = document.getElementById("error");
   errorElement.style.display = "none";
 }
-
 
 async function handleGenerate() {
   const rows = document.getElementById("rows").value;

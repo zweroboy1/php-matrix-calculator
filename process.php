@@ -8,8 +8,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $calculator = new App\Matrix\MatrixCalculator();
 
     if (isset($data['generate'])) {
-        $rows = (int)$data['rows'];
-        $cols = (int)$data['cols'];
+        $rows = isset($data['rows']) ? (int)$data['rows'] : 0;
+        $cols = isset($data['cols']) ? (int)$data['cols'] : 0;
+
+        if ($rows < 1 || $rows > 10 || $cols < 1 || $cols > 10) {
+            echo json_encode(['error' => 'Rows and columns must be between 1 and 10.']);
+            exit();
+        }
 
         $matrixA = $calculator->generateMatrix($rows, $cols);
         $matrixB = $calculator->generateMatrix($rows, $cols);
