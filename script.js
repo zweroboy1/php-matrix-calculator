@@ -1,3 +1,54 @@
+const errorMessages = {
+  "Matrices cannot be added: size mismatch.": {
+    title: "Неможливо додати матриці",
+    description: "Додавати можна лише матриці однакового розміру. Перевірте розмірність матриць A та B.",
+  },
+  "Matrices cannot be subtracted: size mismatch.": {
+    title: "Неможливо відняти матриці",
+    description: "Віднімати можна лише матриці однакового розміру. Перевірте розмірність матриць A та B.",
+  },
+  "Matrices cannot be multiplied: size mismatch.": {
+    title: "Неможливо перемножити матриці",
+    description: "Множення можливе лише для матриць, де кількість стовпців матриці A дорівнює кількості рядків матриці B. Перевірте розмірність матриць.",
+  },
+  "Matrix A is invalid.": {
+    title: "Невірна матриця A",
+    description: "Усі комірки матриці A повинні бути заповнені числами. Перевірте, чи всі значення введено коректно.",
+  },
+  "Matrix B is invalid.": {
+    title: "Невірна матриця B",
+    description: "Усі комірки матриці B повинні бути заповнені числами. Перевірте, чи всі значення введено коректно.",
+  },
+  "Matrix A is invalid. Matrix B is invalid.": {
+    title: "Невірні матриці A та B",
+    description: "Усі комірки матриць A та B повинні бути заповнені числами. Перевірте, чи всі значення введено коректно.",
+  },
+};
+
+function showError(errorKey) {
+  const errorElement = document.getElementById("error");
+  const errorMessageElement = document.getElementById("errorMessage");
+
+  const errorData = errorMessages[errorKey] || {
+    title: "Помилка",
+    description: "Сталася невідома помилка. Спробуйте ще раз.",
+  };
+
+  errorMessageElement.innerHTML = `
+    <strong>${errorData.title}</strong><br>
+    <span>${errorData.description}</span>
+  `;
+
+  errorElement.style.display = "flex";
+  document.getElementById("result").style.display = "none";
+}
+
+function hideError() {
+  const errorElement = document.getElementById("error");
+  errorElement.style.display = "none";
+}
+
+
 async function handleGenerate() {
   const rows = document.getElementById("rows").value;
   const cols = document.getElementById("cols").value;
@@ -53,18 +104,6 @@ async function handleCalculate() {
   } catch (error) {
     showError("Помилка при обчисленні. Спробуйте ще раз.");
   }
-}
-
-function showError(message) {
-  const errorElement = document.getElementById("error");
-  errorElement.style.display = "flex";
-  document.getElementById("errorMessage").textContent = message;
-  document.getElementById("result").style.display = "none";
-}
-
-function hideError() {
-  const errorElement = document.getElementById("error");
-  errorElement.style.display = "none";
 }
 
 function generateMatrixInputs(containerId, matrix) {

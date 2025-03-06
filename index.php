@@ -39,7 +39,7 @@
 
         <div id="error" style="display: none;">
             <span class="error-icon">⚠️</span>
-            <span id="errorMessage"></span>
+            <div id="errorMessage"></div>
         </div>
 
         <div id="result" style="display: none;">

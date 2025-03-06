@@ -96,4 +96,23 @@ td {
 .error-icon {
   margin-right: 10px;
   font-size: 1.2em;
+  background-color: #ffcbce;
+  border-radius: 10px;
+  border: 1px solid #f6282821;
+  padding: 10px;
+}
+
+#errorMessage {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+#errorMessage strong {
+  font-size: 1.1em;
+  margin-bottom: 5px;
+}
+
+#errorMessage span {
+  font-size: 0.9em;
 }
