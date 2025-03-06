@@ -58,11 +58,32 @@ button {
   color: white;
   border: none;
   cursor: pointer;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 4px;
+  font-size: 1em;
 }
 
 button:hover {
   background-color: #218838;
 }
+
+#clearButton {
+  background-color: #ffc107;
+}
+
+#clearButton:hover {
+  background-color: #e0a800;
+}
+
+#resetButton {
+  background-color: #dc3545;
+}
+
+#resetButton:hover {
+  background-color: #c82333;
+}
+
 
 table {
   width: 100%;
@@ -91,6 +112,8 @@ td {
   margin-top: 20px;
   border: 1px solid #c62828;
   align-items: center;
+  max-width: 400px;
+  margin: 20px auto;
 }
 
 .error-icon {

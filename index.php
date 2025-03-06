@@ -35,6 +35,8 @@
             <h2>Матриця B</h2>
             <div id="matrixB"></div>
             <button type="button" id="calculateButton">Обчислити</button>
+            <button type="button" id="clearButton">Очистити матриці</button>
+            <button type="button" id="resetButton">На початок</button>
         </div>
 
         <div id="error" style="display: none;">

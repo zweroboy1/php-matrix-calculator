@@ -154,5 +154,22 @@ function displayResult(result) {
   });
 }
 
+function clearMatrices() {
+  const inputs = document.querySelectorAll(".matrix-input");
+  inputs.forEach((input) => {
+    input.value = "";
+  });
+}
+
+function resetForm() {
+  document.getElementById("matrixForm").reset();
+  document.getElementById("matrixInputs").style.display = "none";
+  document.getElementById("result").style.display = "none";
+  document.getElementById("error").style.display = "none";
+  clearMatrices();
+}
+
+document.getElementById("clearButton").addEventListener("click", clearMatrices);
+document.getElementById("resetButton").addEventListener("click", resetForm);
 document.getElementById("generateButton").addEventListener("click", handleGenerate);
 document.getElementById("calculateButton").addEventListener("click", handleCalculate);
