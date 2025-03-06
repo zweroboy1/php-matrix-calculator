@@ -22,8 +22,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $matrixB = $data['matrixB'];
     $operation = $data['operation'];
 
-    if (!$calculator->validateMatrix($matrixA) || !$calculator->validateMatrix($matrixB)) {
-        echo json_encode(['error' => 'Invalid matrix data.']);
+    $errors = [];
+
+    if ($operation !== 'transpose_b') {
+        if (!$calculator->validateMatrix($matrixA)) {
+            $errors[] = 'Matrix A is invalid.';
+        }
+    }
+
+    if ($operation !== 'transpose_a') {
+        if (!$calculator->validateMatrix($matrixB)) {
+            $errors[] = 'Matrix B is invalid.';
+        }
+    }
+
+    if (!empty($errors)) {
+        echo json_encode(['error' => implode(' ', $errors)]);
         exit();
     }
 
