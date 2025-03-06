@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matrix Calculator</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
 
 <body>
@@ -49,6 +51,15 @@
             <table id="resultTable"></table>
         </div>
     </div>
+
+    <footer>
+        <div class="footer-content">
+            <a href="https://github.com/zweroboy1/php-matrix-calculator" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github"></i> zweroboy1
+            </a>
+            <span>© 2025</span>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
