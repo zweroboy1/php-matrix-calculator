@@ -81,3 +81,19 @@ td {
   padding: 8px;
   text-align: center;
 }
+
+#error {
+  display: none;
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 20px;
+  border: 1px solid #c62828;
+  align-items: center;
+}
+
+.error-icon {
+  margin-right: 10px;
+  font-size: 1.2em;
+}

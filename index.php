@@ -37,8 +37,13 @@
             <button type="button" id="calculateButton">Обчислити</button>
         </div>
 
+        <div id="error" style="display: none;">
+            <span class="error-icon">⚠️</span>
+            <span id="errorMessage"></span>
+        </div>
+
         <div id="result" style="display: none;">
-            <h2>Результат:</h2>
+            <h2>Результат</h2>
             <table id="resultTable"></table>
         </div>
     </div>

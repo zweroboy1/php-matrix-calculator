@@ -3,17 +3,27 @@ async function handleGenerate() {
   const cols = document.getElementById("cols").value;
   const operation = document.getElementById("operation").value;
 
-  const response = await fetch("process.php", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ rows: rows, cols: cols, operation: operation, generate: true }),
-  });
-  const data = await response.json();
-  document.getElementById("matrixInputs").style.display = "block";
-  generateMatrixInputs("matrixA", data.matrixA);
-  generateMatrixInputs("matrixB", data.matrixB);
+  try {
+    const response = await fetch("process.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ rows: rows, cols: cols, operation: operation, generate: true }),
+    });
+    const data = await response.json();
+
+    if (data.error) {
+      showError(data.error);
+    } else {
+      document.getElementById("matrixInputs").style.display = "block";
+      generateMatrixInputs("matrixA", data.matrixA);
+      generateMatrixInputs("matrixB", data.matrixB);
+      hideError();
+    }
+  } catch (error) {
+    showError("Помилка при генерації матриць. Спробуйте ще раз.");
+  }
 }
 
 async function handleCalculate() {
@@ -23,16 +33,38 @@ async function handleCalculate() {
   const matrixA = getMatrixValues("matrixA");
   const matrixB = getMatrixValues("matrixB");
 
-  const response = await fetch("process.php", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ rows: rows, cols: cols, operation: operation, matrixA: matrixA, matrixB: matrixB }),
-  });
-  const data = await response.json();
-  document.getElementById("result").style.display = "block";
-  displayResult(data.result);
+  try {
+    const response = await fetch("process.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ rows: rows, cols: cols, operation: operation, matrixA: matrixA, matrixB: matrixB }),
+    });
+    const data = await response.json();
+
+    if (data.error) {
+      showError(data.error);
+    } else {
+      document.getElementById("result").style.display = "block";
+      displayResult(data.result);
+      hideError();
+    }
+  } catch (error) {
+    showError("Помилка при обчисленні. Спробуйте ще раз.");
+  }
+}
+
+function showError(message) {
+  const errorElement = document.getElementById("error");
+  errorElement.style.display = "flex";
+  document.getElementById("errorMessage").textContent = message;
+  document.getElementById("result").style.display = "none";
+}
+
+function hideError() {
+  const errorElement = document.getElementById("error");
+  errorElement.style.display = "none";
 }
 
 function generateMatrixInputs(containerId, matrix) {
